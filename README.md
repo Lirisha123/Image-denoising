@@ -1,21 +1,23 @@
-# Image Denoising using Convolutional Autoencoders (CAE)
+# 📸 Image Denoising using Convolutional Autoencoders (CAE)
 
-**Framework:** TensorFlow / Keras  
-**Domain:** Deep Learning & Computer Vision  
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-## 📌 Project Overview
-This project implements a Deep Convolutional Autoencoder (CAE) trained to recover clean, high-fidelity images from severe synthetic Gaussian noise (\(\sigma = 0.3\)).
+An end-to-end Deep Learning application that restores corrupted, noisy images back to clean ground-truth quality using a **Symmetric Convolutional Autoencoder** trained on the **Fashion-MNIST** benchmark dataset.
 
-## 🏗️ Model Architecture
-- **Input Layer:** \((28, 28, 1)\)
-- **Encoder:** 
-  - `Conv2D(32, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
-  - `Conv2D(16, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
-- **Bottleneck:** Compressed structural feature representations.
-- **Decoder:**
-  - `Conv2D(16, (3,3))` + ReLU -> `UpSampling2D((2,2))`
-  - `Conv2D(32, (3,3))` + ReLU -> `UpSampling2D((2,2))`
-  - `Conv2D(1, (3,3))` + Sigmoid output.
+🎯 What This Project Does
+When digital images get corrupted by severe additive Gaussian noise ($\sigma = 0.3$), standard filters blur essential edges. This Deep Learning pipeline
+Compresses noisy input images into a low-dimensional latent bottleneck feature space (Encoder).
+Filters out random noise while retaining core structural patterns.
+Reconstructs high-fidelity, clean $28 \times 28$ images pixel-by-pixel (Decoder).
+
+
+🏗 Model Architecture BreakdownEncoder: 
+Conv2D(32) $\rightarrow$ MaxPooling2D $\rightarrow$ Conv2D(16) $\rightarrow$ MaxPooling2D
+Latent Bottleneck: Compressed structural feature representation.
+Decoder: Conv2D(16) $\rightarrow$ UpSampling2D $\rightarrow$ Conv2D(32) $\rightarrow$ UpSampling2D $\rightarrow$ Conv2D(1, Sigmoid)
+
 
 ## 📊 Quantitative Benchmark Results
 | Metric | Noisy Image | Denoised Reconstruction | Performance Gain |
