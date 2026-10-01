@@ -6,18 +6,19 @@
 
 An end-to-end Deep Learning application that restores corrupted, noisy images back to clean ground-truth quality using a **Symmetric Convolutional Autoencoder** trained on the **Fashion-MNIST** benchmark dataset.
 
-🎯 What This Project Does
-When digital images get corrupted by severe additive Gaussian noise ($\sigma = 0.3$), standard filters blur essential edges. This Deep Learning pipeline
-Compresses noisy input images into a low-dimensional latent bottleneck feature space (Encoder).
-Filters out random noise while retaining core structural patterns.
-Reconstructs high-fidelity, clean $28 \times 28$ images pixel-by-pixel (Decoder).
+## 📌 Project Overview
+This project implements a Deep Convolutional Autoencoder (CAE) trained to recover clean, high-fidelity images from severe synthetic Gaussian noise (\(\sigma = 0.3\)).
 
-
-🏗 Model Architecture BreakdownEncoder: 
-Conv2D(32) $\rightarrow$ MaxPooling2D $\rightarrow$ Conv2D(16) $\rightarrow$ MaxPooling2D
-Latent Bottleneck: Compressed structural feature representation.
-Decoder: Conv2D(16) $\rightarrow$ UpSampling2D $\rightarrow$ Conv2D(32) $\rightarrow$ UpSampling2D $\rightarrow$ Conv2D(1, Sigmoid)
-
+## 🏗️ Model Architecture
+- **Input Layer:** \((28, 28, 1)\)
+- **Encoder:** 
+  - `Conv2D(32, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
+  - `Conv2D(16, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
+- **Bottleneck:** Compressed structural feature representations.
+- **Decoder:**
+  - `Conv2D(16, (3,3))` + ReLU -> `UpSampling2D((2,2))`
+  - `Conv2D(32, (3,3))` + ReLU -> `UpSampling2D((2,2))`
+  - `Conv2D(1, (3,3))` + Sigmoid output.
 
 ## 📊 Quantitative Benchmark Results
 | Metric | Noisy Image | Denoised Reconstruction | Performance Gain |
@@ -28,8 +29,13 @@ Decoder: Conv2D(16) $\rightarrow$ UpSampling2D $\rightarrow$ Conv2D(32) $\righta
 ## 🖼️ Dataset Results Evaluation
 ![Batch Denoising Results](fashion_denoising_results.png)
 
+## 🧪 Manual Custom Image Testing
+Testing unseen external images passed through the trained model pipeline:
+![Custom Test Result](custom_test_result.png)
 
-## 🚀 How to Run
-1. Clone this repository.
-2. Open `Image_Denoising_CAE.ipynb` in Google Colab or Jupyter Notebook.
-3. Run all cells to train or perform evaluation using `autoencoder_fashion.h5`.
+## 🛠️ Requirements & Tech Stack
+Frameworks: TensorFlow 2.x, Keras
+
+Libraries: NumPy, Matplotlib
+
+Environment: Google Colab GPU (T4)
