@@ -32,5 +32,7 @@ This project implements a Deep Convolutional Autoencoder (CAE) trained to recove
 
 ## 🛠️ Requirements & Tech Stack
 Frameworks: TensorFlow 2.x, Keras
+
 Libraries: NumPy, Matplotlib
+
 Environment: Google Colab GPU (T4)
