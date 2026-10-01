@@ -1,7 +1,5 @@
 # Image Denoising using Convolutional Autoencoders (CAE)
 
-**Author:** Lirisha Reddy 
-
 **Framework:** TensorFlow / Keras  
 **Domain:** Deep Learning & Computer Vision  
 
