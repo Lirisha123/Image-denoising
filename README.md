@@ -29,13 +29,8 @@ This project implements a Deep Convolutional Autoencoder (CAE) trained to recove
 ## 🖼️ Dataset Results Evaluation
 ![Batch Denoising Results](fashion_denoising_results.png)
 
-## 🧪 Manual Custom Image Testing
-Testing unseen external images passed through the trained model pipeline:
-![Custom Test Result](custom_test_result.png)
 
 ## 🛠️ Requirements & Tech Stack
 Frameworks: TensorFlow 2.x, Keras
-
 Libraries: NumPy, Matplotlib
-
 Environment: Google Colab GPU (T4)
