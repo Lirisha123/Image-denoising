@@ -1,8 +1,34 @@
-# 📸 Deep Convolutional Autoencoder for Image Denoising
+# Image Denoising using Convolutional Autoencoders (CAE)
 
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)
+**Author:** Lirisha Reddy 
+**Framework:** TensorFlow / Keras  
+**Domain:** Deep Learning & Computer Vision  
 
-An end-to-end Deep Learning pipeline implementing a **Convolutional Autoencoder (CAE)** architecture designed to remove severe additive Gaussian noise (\(\sigma = 0.3\)) from images and reconstruct high-fidelity outputs.
+## 📌 Project Overview
+This project implements a Deep Convolutional Autoencoder (CAE) trained to recover clean, high-fidelity images from severe synthetic Gaussian noise (\(\sigma = 0.3\)).
+
+## 🏗️ Model Architecture
+- **Input Layer:** \((28, 28, 1)\)
+- **Encoder:** 
+  - `Conv2D(32, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
+  - `Conv2D(16, (3,3))` + ReLU -> `MaxPooling2D((2,2))`
+- **Bottleneck:** Compressed structural feature representations.
+- **Decoder:**
+  - `Conv2D(16, (3,3))` + ReLU -> `UpSampling2D((2,2))`
+  - `Conv2D(32, (3,3))` + ReLU -> `UpSampling2D((2,2))`
+  - `Conv2D(1, (3,3))` + Sigmoid output.
+
+## 📊 Quantitative Benchmark Results
+| Metric | Noisy Image | Denoised Reconstruction | Performance Gain |
+| :--- | :---: | :---: | :---: |
+| **Peak Signal-to-Noise Ratio (PSNR)** | 12.81 dB | **20.18 dB** | **+7.37 dB** |
+| **Structural Similarity (SSIM)** | 0.4121 | **0.6888** | **+0.2767** |
+
+## 🖼️ Dataset Results Evaluation
+![Batch Denoising Results](fashion_denoising_results.png)
+
+
+## 🚀 How to Run
+1. Clone this repository.
+2. Open `Image_Denoising_CAE.ipynb` in Google Colab or Jupyter Notebook.
+3. Run all cells to train or perform evaluation using `autoencoder_fashion.h5`.
